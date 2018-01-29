@@ -3,7 +3,6 @@
     .logo-spin {
         animation: App-logo-spin infinite 3s linear;
     }
-
     @keyframes App-logo-spin {
         from {
             transform: rotate(0deg);
@@ -11,5 +10,23 @@
         to {
             transform: rotate(360deg);
         }
+    }
+    .sm-round-corner {
+        border-radius: 1rem !important;
+    }
+    .sm-round-corner:focus {
+        border-color: #242526 !important;
+    }
+    .button {
+        background-color: #00bfff !important;
+        color: white !important;
+        border-radius: 5px !important;
+        border: none !important;
+    }
+    a {
+        color: #00bfff !important;
+    }
+    .background {
+        background-color: #f8f8ff !important; 
     }
 }

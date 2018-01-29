@@ -6,7 +6,6 @@ import { findDOMNode } from 'react-dom';
 import { signIn } from './actions/memberAction';
 
 import logo from './logo.svg';
-import style from './styles/index.scss';
 
 import {
     Grid,
@@ -17,12 +16,23 @@ import {
     ControlLabel,
     FormControl,
     HelpBlock,
+    Modal,
     Button
 } from 'react-bootstrap';
 
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            logoState: null
+        }
+    }
+
     handleSignIn() {
+
+        this.setState({ logoState: 'logo-spin' });
+        console.log(this.state.logoState)
 
         const member = {
             email: findDOMNode(this.refs.email).value,
@@ -30,43 +40,49 @@ class App extends React.Component {
         };
 
         this.props.signIn(member.email, member.password, () => {
-            
+            this.setState({ logoState: null });
         });
     }
 
+    onFocus(e) {
+    }
 
     render() {
         // start your code here
         return (
-            <Grid>
-                <Row>
-                    <Col>
-                        <Image src={logo} style={{ width: '180px' }} rounded />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
+            <Modal.Dialog>
+                <Modal.Body className="background">
+                    {/* <Grid> */}
+                    <Row>
+                        <Col>
+                            <Image className={this.state.logoState} src={logo} style={{ width: '180px' }} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        {/* <Col> */}
                         <FormGroup controlId="email" validationState={null}>
                             <ControlLabel>E-mail address</ControlLabel>
-                            <FormControl type="text" placeholder="example@appman.co.th" ref="email" />
+                            <FormControl type="text" placeholder="example@appman.co.th" ref="email" onFocus={this.onFocus.bind(this)} className="sm-round-corner" />
                             <FormControl.Feedback />
                         </FormGroup>
                         <FormGroup controlId="password" validationState={null}>
                             <ControlLabel>Password</ControlLabel>
-                            <FormControl type="password" placeholder="your password..." ref="password" />
+                            <FormControl type="password" placeholder="your password..." ref="password" onFocus={this.onFocus.bind(this)} className="sm-round-corner" />
                             <FormControl.Feedback />
                         </FormGroup>
-                    </Col>
-                </Row>
-                <p>{this.props.member.mymember.msg}</p>
-                <Row>
-                    <Button bsStyle="info" onClick={this.handleSignIn.bind(this)}>SIGN UP</Button>
-                </Row>
-                <Row>
-                    <a className="pull-left">Forget password ?</a>
-                    <a className="pull-right">Create a new account</a>
-                </Row>
-            </Grid>
+                        {/* </Col> */}
+                    </Row>
+                    <p style={{ color: 'red' }}>{this.props.member.mymember.msg}</p>
+                    <Row>
+                        <Button className="button" onClick={this.handleSignIn.bind(this)}>SIGN UP</Button>
+                    </Row>
+                    <Row>
+                        <a className="pull-left">Forget password ?</a>
+                        <a className="pull-right">Create a new account</a>
+                    </Row>
+                    {/* </Grid> */}
+                </Modal.Body>
+            </Modal.Dialog>
         );
     }
 }
