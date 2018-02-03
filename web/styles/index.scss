@@ -22,17 +22,20 @@
         color: white !important;
         border-radius: 5px !important;
         border: none !important;
+        width: 40%
     }
     a {
         color: #00bfff !important;
     }
-    .background {
-        background-color: #f8f8ff !important;
+    #white-frame {
+        margin: 0 auto;
+        width: 350px;
+        background-color: #f8f8ff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        padding: 10px
     }
-
-    .center_image {
-        margin: auto;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    #image-wrapper {
+        margin: 0 auto;
+        width: 180px
+    }
 }

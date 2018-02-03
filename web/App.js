@@ -53,13 +53,9 @@ class App extends React.Component {
             <div style={{
                 padding: '10px'
             }}>
-                <div style={{
-                    margin: '0 auto', width: '350px', backgroundColor: '#f8f8ff'
-                    , boxShadow: '0 5px 10px rgba(0, 0, 0, 0.2)',
-                    padding: '10px'
-                }}>
+                <div id='white-frame'>
                     <Grid style={{ width: '100%' }}>
-                        <div style={{ margin: '0 auto', width: '180px' }}>
+                        <div id='image-wrapper'>
                             <Image className={this.state.logoState} src={logo} />
                         </div>
                         <br />
