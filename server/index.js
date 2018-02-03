@@ -26,17 +26,17 @@ app.post('/api/login', async (req, res, next) => {
     await delay(3000);
 
     if (_.isNil(email) || _.isNil(password)) {
-        return res.status(400).json({ msg: 'email or password can not be empty' });
+        return res.status(400).json({ msg: 'Email or password can not be empty' });
     }
 
     if (!_.isString(email) || !_.isString(password)) {
-        return res.status(400).json({ msg: 'email or password must be string' });
+        return res.status(400).json({ msg: 'Email or password must be string' });
     }
 
     if (_.isEqual(EMAIL, email) && _.isEqual(PASSWORD, password)) {
         return res.status(200).json({ msg: 'OK' });
     } else {
-        return res.status(401).json({ msg: 'email or password may be wrong' });
+        return res.status(401).json({ msg: 'Email or password may be wrong' });
     }
 });
 

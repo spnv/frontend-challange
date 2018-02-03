@@ -32,7 +32,7 @@ class App extends React.Component {
     handleSignIn() {
 
         this.setState({ logoState: 'logo-spin' });
-        console.log(this.state.logoState)
+        this.props.member.mymember.msg = null;
 
         const member = {
             email: findDOMNode(this.refs.email).value,
@@ -50,39 +50,45 @@ class App extends React.Component {
     render() {
         // start your code here
         return (
-            <Modal.Dialog>
-                <Modal.Body className="background">
-                    {/* <Grid> */}
-                    <Row>
-                        <Col>
-                            <Image className={this.state.logoState} src={logo} style={{ width: '180px' }} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        {/* <Col> */}
-                        <FormGroup controlId="email" validationState={null}>
-                            <ControlLabel>E-mail address</ControlLabel>
-                            <FormControl type="text" placeholder="example@appman.co.th" ref="email" onFocus={this.onFocus.bind(this)} className="sm-round-corner" />
-                            <FormControl.Feedback />
-                        </FormGroup>
-                        <FormGroup controlId="password" validationState={null}>
-                            <ControlLabel>Password</ControlLabel>
-                            <FormControl type="password" placeholder="your password..." ref="password" onFocus={this.onFocus.bind(this)} className="sm-round-corner" />
-                            <FormControl.Feedback />
-                        </FormGroup>
-                        {/* </Col> */}
-                    </Row>
-                    <p style={{ color: 'red' }}>{this.props.member.mymember.msg}</p>
-                    <Row>
-                        <Button className="button" onClick={this.handleSignIn.bind(this)}>SIGN UP</Button>
-                    </Row>
-                    <Row>
-                        <a className="pull-left">Forget password ?</a>
-                        <a className="pull-right">Create a new account</a>
-                    </Row>
-                    {/* </Grid> */}
-                </Modal.Body>
-            </Modal.Dialog>
+            <div style={{
+                padding: '10px'
+            }}>
+                <div style={{
+                    margin: '0 auto', width: '350px', backgroundColor: '#f8f8ff'
+                    , boxShadow: '0 5px 10px rgba(0, 0, 0, 0.2)',
+                    padding: '10px'
+                }}>
+                    <Grid style={{ width: '100%' }}>
+                        <div style={{ margin: '0 auto', width: '180px' }}>
+                            <Image className={this.state.logoState} src={logo} />
+                        </div>
+                        <br />
+                        <Row>
+                            <Col>
+                                <FormGroup controlId="email" validationState={null}>
+                                    <ControlLabel>E-mail address</ControlLabel>
+                                    <FormControl style={{ background: 'transparent' }} type="text" placeholder="example@appman.co.th" ref="email" onFocus={this.onFocus.bind(this)} className="sm-round-corner" />
+                                    <FormControl.Feedback />
+                                </FormGroup>
+                                <FormGroup controlId="password" validationState={null}>
+                                    <ControlLabel>Password</ControlLabel>
+                                    <FormControl style={{ background: 'transparent' }} type="password" placeholder="your password..." ref="password" onFocus={this.onFocus.bind(this)} className="sm-round-corner" />
+                                    <FormControl.Feedback />
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <p style={{ color: 'red' }}>{this.props.member.mymember.msg}</p>
+                        <div className="text-center">
+                            <Button bsSize='large' className="button" onClick={this.handleSignIn.bind(this)}>SIGN IN</Button>
+                        </div>
+                        <br />
+                        <Row>
+                            <a className="pull-left"><b>Forget password ?</b></a>
+                            <a className="pull-right"><b>Create a new account</b></a>
+                        </Row>
+                    </Grid>
+                </div>
+            </div>
         );
     }
 }
